@@ -9,13 +9,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 import React from 'react';
-import {
-  StyleSheet, AsyncStorage
-} from 'react-native';
+import { AsyncStorage } from 'react-native';
 import 'react-native-gesture-handler';
-import {
-  Colors
-} from 'react-native/Libraries/NewAppScreen';
 import { Provider } from "react-redux";
 import { createStore } from 'redux';
 import { persistReducer, persistStore } from "redux-persist";
@@ -42,77 +37,30 @@ const App: () => React$Node = () => {
   const store = createStore(persistedReducer)
   let persistor = persistStore(store)
 
-
+  const options = {
+    headerStyle: {
+      backgroundColor: 'rgb(32,77,216)',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
           <Stack.Navigator>
-
-            <Stack.Screen name={'ChatList'} component={ChatList} options={{
-              headerStyle: {
-                backgroundColor: 'rgb(32,77,216)',
-              },
-              headerTintColor: 'white',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-            }} />
-            <Stack.Screen name={'ChatPage'} component={ChatPage} options={{
-              headerStyle: {
-                backgroundColor: 'rgb(32,77,216)',
-              },
-              headerTintColor: 'white',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-            }} />
+            <Stack.Screen name={'ChatList'} component={ChatList} options={options} />
+            <Stack.Screen name={'ChatPage'} component={ChatPage} options={options} />
           </Stack.Navigator>
-
         </NavigationContainer>
       </PersistGate>
     </Provider>
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+
 
 export default App;
 

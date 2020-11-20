@@ -1,10 +1,10 @@
 
 
 
-import React, { useEffect, useState } from 'react'
-import { View, TextInput, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux';
-import { sendMessage } from '../../store/chatPage/Actions'
+import React, { useState } from 'react';
+import { Image, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { sendMessage } from '../../store/chatPage/Actions';
 
 
 

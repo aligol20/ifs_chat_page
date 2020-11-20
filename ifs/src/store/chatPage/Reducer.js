@@ -5,7 +5,6 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case SEND_MESSAGE:
-      console.log(action, 'action is working')
       return { ...state, [action.data.index]: state[action.data.index].concat({ sender: 'me', message: action.data.message }) }
 
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { View, StyleSheet, Text, Image } from 'react-native'
-import { color } from 'react-native-reanimated';
 
 const ChatItem = ({ details, showAvatar }) => {
 

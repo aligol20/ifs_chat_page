@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import {
-    View,
-    ActivityIndicator,
     FlatList,
-    StyleSheet,
-    StatusBar
+
+    StatusBar, StyleSheet, View
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import ChatItem from './item/ChatItem'
-import SendMessage from './item/SendMessage'
+import { useSelector } from 'react-redux';
+import ChatItem from './item/ChatItem';
+import SendMessage from './item/SendMessage';
 
 
 const ChatPage = ({ route, navigation }) => {
@@ -46,7 +44,7 @@ const ChatPage = ({ route, navigation }) => {
         <>
             <StatusBar barStyle={'light-content'} />
 
-            <View style={{ flex: 1, paddingTop: 7 }}>
+            <View style={styles.container}>
                 <FlatList
                     ref={flatListRef}
                     data={chat_data && chat_data[chat_id] ? chat_data[chat_id] : []}
@@ -58,18 +56,14 @@ const ChatPage = ({ route, navigation }) => {
                             showAvatar={showAvatar(index)}
                         />
                     )}
-
-
                 />
-                <SendMessage
-
-                    chat_id={chat_id}
-                />
+                <SendMessage chat_id={chat_id} />
             </View>
         </>
     )
 }
 const styles = StyleSheet.create({
-    loading: { flex: 1 }
+    loading: { flex: 1 },
+    container: { flex: 1, paddingTop: 7 }
 })
 export default ChatPage
